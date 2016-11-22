@@ -46,7 +46,7 @@ array( "{$CFG->dbprefix}lti_key",
     settings_url        TEXT NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     UNIQUE(key_sha256),
     PRIMARY KEY (key_id)
@@ -67,7 +67,7 @@ array( "{$CFG->dbprefix}lti_context",
     settings_url        TEXT NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     CONSTRAINT `{$CFG->dbprefix}lti_context_ibfk_1`
         FOREIGN KEY (`key_id`)
@@ -93,7 +93,7 @@ array( "{$CFG->dbprefix}lti_link",
     settings_url        TEXT NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     CONSTRAINT `{$CFG->dbprefix}lti_link_ibfk_1`
         FOREIGN KEY (`context_id`)
@@ -122,7 +122,7 @@ array( "{$CFG->dbprefix}lti_user",
     login_at            DATETIME NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     CONSTRAINT `{$CFG->dbprefix}lti_user_ibfk_1`
         FOREIGN KEY (`key_id`)
@@ -145,7 +145,7 @@ array( "{$CFG->dbprefix}lti_membership",
 
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     CONSTRAINT `{$CFG->dbprefix}lti_membership_ibfk_1`
         FOREIGN KEY (`context_id`)
@@ -174,7 +174,7 @@ array( "{$CFG->dbprefix}lti_service",
     json                TEXT NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     CONSTRAINT `{$CFG->dbprefix}lti_service_ibfk_1`
         FOREIGN KEY (`key_id`)
@@ -206,7 +206,7 @@ array( "{$CFG->dbprefix}lti_result",
     json               TEXT NULL,
     entity_version     INTEGER NOT NULL DEFAULT 0,
     created_at         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at         TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     retrieved_at       DATETIME NULL,
 
     CONSTRAINT `{$CFG->dbprefix}lti_result_ibfk_1`
@@ -286,7 +286,7 @@ array( "{$CFG->dbprefix}profile",
     login_at            DATETIME NULL,
     entity_version      INTEGER NOT NULL DEFAULT 0,
     created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at          TIMESTAMP NOT NULL DEFAULT 0,
+    updated_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
 
     UNIQUE(profile_id, profile_sha256),
     PRIMARY KEY (profile_id)
